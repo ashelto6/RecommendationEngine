@@ -5,7 +5,7 @@ This repo houses a basic recommendation engine that uses collaborative filtering
 To use this program, you need to have clang++ or g++, as well as GNU make installed.
 
 ```
-git clone https://github.com/hjr265/toptal-recommengine.git
+git clone https://github.com/ashelto6/RecommendationEngine.git
 cd RecommendationEngine
 make
 ```
