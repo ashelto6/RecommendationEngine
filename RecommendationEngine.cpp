@@ -162,7 +162,7 @@ int main()
 
     for(int i = 0; i < 12; ++i)
     {
-        std::cout << "Rate this video [0: unseen | 1: like | 2: dislike] -> " << videos[i] << "\n";
+        std::cout << "Rate this video [0: unseen | 1: like | -1: dislike] -> " << videos[i] << "\n";
         int rating;
         std::cin >> rating;
         if(rating != 1 && rating != -1 && rating != 0)
