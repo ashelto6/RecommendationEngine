@@ -127,13 +127,11 @@ double RecommendationEngine::getSimilarityIndex(const std::string& user_a, const
 
 int main()
 {
-    //std::cout << VIDEOS.size() << "\n";
-    //std::cout << PROFILES["Tony"].size() << "\n";
     Read ReadVidData;
     std::unordered_map<std::string, std::vector<int>> profiles = ReadVidData.readProfileRatings("data/profileRatings.csv");               
     std::vector<std::string> videos = ReadVidData.readVidNames("data/youtube_trending_videos_data.csv");
-    /*
-    std::map<std::string, std::vector<int>> profiles = { 
+/* 
+    std::unordered_map<std::string, std::vector<int>> profiles = { 
                                                     {"Tony",    {0, 1, 1, 0, 0, -1, -1, 1, 0, 1, 0, 1}}, 
                                                     {"Jackson", {0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, -1}},
                                                     {"Rodger",  {0, 1, 0, 1, 0, -1, -1, 0, 0, 0, 1, 1}},
@@ -156,7 +154,24 @@ int main()
                                     "11) Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla varius.", 
                                     "12) Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque posuere."
                                     };
-    */
+
+    std::string name;
+    std::cout << "Enter your username: \n";
+    std::cin >> name;
+    std::vector<int> ratings;
+
+    for(int i = 0; i < 12; ++i)
+    {
+        std::cout << "Rate this video [0: unseen | 1: like | 2: dislike] -> " << videos[i] << "\n";
+        int rating;
+        std::cin >> rating;
+        if(rating != 1 && rating != -1 && rating != 0)
+            exit(0);
+        ratings.push_back(rating);
+    }
+
+    profiles[name] = ratings;
+*/
     RecommendationEngine Engine(videos, profiles);
 
     for( auto& user : profiles )
@@ -177,9 +192,11 @@ int main()
             
         std::cout << "#########################################################################################################\n";
     }
-    /*
-    std::vector<std::string> userRecommendations = Engine.getRecommendations("Tony");
-        for( auto& recommended : userRecommendations )
-            std::cout << recommended << "\n";
-    */
+
+/*
+    std::vector<std::pair<std::string, double>> userRecommendations = Engine.getRecommendations(name,3);
+    std::cout << "\n" << name << ", here are your recommended videos:\n";
+    for( auto& recommended : userRecommendations )
+        std::cout << recommended.first << "\n";
+*/
 }
