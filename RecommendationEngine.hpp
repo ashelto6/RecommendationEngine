@@ -13,16 +13,17 @@
 typedef std::vector<std::pair<std::string, double>> vecOfStrToDoubPairs;
 class RecommendationEngine{
 public:
-    RecommendationEngine(std::vector<std::string>& videos, std::map<std::string, std::vector<int>>& profiles) 
-    : videos_(videos), profiles_(profiles) {}
+    RecommendationEngine(std::vector<std::string>& videos, std::unordered_map<std::string, std::vector<int>>& profiles) 
+    : videos_(&videos), profiles_(&profiles) {}
 
-    vecOfStrToDoubPairs getSimilarUsers(const std::string& targetUser);
+    vecOfStrToDoubPairs getSimilarUsers(const std::string& targetUser, int k = 3);
     
-    vecOfStrToDoubPairs getRecommendations(const std::string& user, vecOfStrToDoubPairs simUsers = vecOfStrToDoubPairs());
+    vecOfStrToDoubPairs getRecommendations(const std::string& user, int k, vecOfStrToDoubPairs simUsers = vecOfStrToDoubPairs());
     
 private:
-    std::vector<std::string> videos_;
-    std::map<std::string, std::vector<int>> profiles_;
+    std::vector<std::string>* videos_;
+    std::unordered_map<std::string, std::vector<int>>* profiles_;
+    std::unordered_map<std::string, std::vector<int>> unseen_;
 
     double getSimilarityIndex(const std::string& user_a, const std::string& user_b);
 };
