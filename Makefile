@@ -1,3 +1,3 @@
 default:
-	g++ RecommendationEngine.cpp data/readCSVData.cpp -o recommendations
+	g++ -std=c++17 -pthread RecommendationEngine.cpp data/readCSVData.cpp -o recommendations
 	./recommendations
