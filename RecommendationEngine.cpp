@@ -311,14 +311,20 @@ bool RecommendationEngine::isZero(const int rating)
 
 
 
-int main()
+int main(int argc, char* argv[])
 {
+    if(argc != 3)
+    {
+        std::cout << "not enough command line arguments. Try again with 2 input files.\n";
+        exit(-1);
+    }
+
     Read ReadVidData;
     std::cout << "\nReading Profile and Ratings data from csv...\n";
-    std::unordered_map<std::string, std::vector<int>> profiles = ReadVidData.readProfileRatings("data/profileRatings_sm.csv");
+    std::unordered_map<std::string, std::vector<int>> profiles = ReadVidData.readProfileRatings(argv[1]);
     std::cout << "Reading of Profile and Ratings data from csv done!\n"  
               << "\nReading video names data from csv...\n";
-    std::vector<std::string> videos = ReadVidData.readVidNames("data/youtube_trending_videos_data_sm.csv");
+    std::vector<std::string> videos = ReadVidData.readVidNames(argv[argc-1]);
     std::cout << "Reading of video names data from csv done!\n";
 
     /*
