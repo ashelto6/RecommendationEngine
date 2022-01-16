@@ -162,7 +162,7 @@ void RecommendationEngine::seenUnseen(const std::string& targetUser, const std::
 void RecommendationEngine::cacheData()
 {
     std::cout << "\nCalculating and Caching Data..."
-              << "\nLooks like this may take a few hours!\n\n";
+              << "\nLooks like this may take a bit!\n\n";
 
     std::ostream& os = std::clog;
     std::string message = "Progress: #";
