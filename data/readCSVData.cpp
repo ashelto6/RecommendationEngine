@@ -1,6 +1,7 @@
 #include <iostream>
 #include <fstream>
 #include <vector>
+#include <string>
 #include <unordered_map>
 
 #include "readCSVData.hpp"
@@ -12,6 +13,8 @@ std::vector<std::string> Read::readVidIds(std::string filePath)
     //std::vector<std::string> vidNames;
 
     std::ifstream file(filePath);
+
+    getline(file,line); // read in header
 
     while( getline(file,line) )
         vidIds.push_back(line.substr(0, line.find_first_of(','))); //stores video Ids from csv
@@ -29,6 +32,8 @@ std::vector<std::string> Read::readVidNames(std::string filePath)
 
     std::ifstream file(filePath);
 
+    getline(file,line); // read in header
+
     while( getline(file,line) )
         vidNames.push_back(line.substr(line.find_first_of(',')+1, line.length())); //stores video names from csv
         //vidIds.push_back(line.substr(0, line.find_first_of(','))); //stores video Ids from csv
@@ -43,6 +48,8 @@ std::unordered_map<std::string, std::vector<int>> Read::readProfileRatings(std::
     std::unordered_map<std::string, std::vector<int>> profileRatings;
 
     std::fstream file(filePath, std::ios::in);
+
+    getline(file,line); // read in header
 
     while( getline(file, line) )
     { 
