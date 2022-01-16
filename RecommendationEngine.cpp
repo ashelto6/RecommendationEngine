@@ -313,7 +313,7 @@ bool RecommendationEngine::isZero(const int rating)
 
 int main(int argc, char* argv[])
 {
-    if(argc != 3)
+    if( argc != 3 )
     {
         std::cout << "not enough command line arguments. Try again with 2 input files.\n";
         exit(-1);
