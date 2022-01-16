@@ -37,10 +37,11 @@ vecOfStrToDoubPairs RecommendationEngine::getSimilarUsers(const std::string& tar
             similarUsers.push_back({profile.first, similarityIndex(targetUser, profile.first)});
     });
 
-    std::partial_sort(similarUsers.begin(), similarUsers.begin()+3, similarUsers.end(), [](auto& user1, auto& user2)
+    std::partial_sort(similarUsers.begin(), similarUsers.begin()+k, similarUsers.end(), [](auto& user1, auto& user2)
     {
         return user1.second > user2.second; 
     });
+
     similarUsers.resize(k);
     
     /*
@@ -71,6 +72,7 @@ vecOfStrToDoubPairs RecommendationEngine::getRecommendations(const std::string& 
     {
         double vidScore = 0.0;
         int numOfScores = 0;
+
         std::for_each( similarUsers.begin(), similarUsers.end(), [&](auto& profile)
         {
             if( isZero((*profiles_)[profile.first][unseen_[targetUser][i]]) == false && isZero(profile.second) == false )
@@ -96,6 +98,7 @@ vecOfStrToDoubPairs RecommendationEngine::getRecommendations(const std::string& 
     { 
         return video1.second > video2.second; 
     });
+
     vids.resize(k);
     //std::cout << "\n";
 
