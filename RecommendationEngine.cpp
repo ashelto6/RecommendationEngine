@@ -313,15 +313,15 @@ bool RecommendationEngine::isZero(const int rating)
 
 int main()
 {
-    //Read ReadVidData;
-    std::cout << "\nReading Profile and Ratings data from csv...\n";
-    //std::unordered_map<std::string, std::vector<int>> profiles = ReadVidData.readProfileRatings("data/profileRatings.csv");
+    Read ReadVidData;
+    //std::cout << "\nReading Profile and Ratings data from csv...\n";
+    std::unordered_map<std::string, std::vector<int>> profiles = ReadVidData.readProfileRatings("data/profileRatings_sm.csv");
     std::cout << "Reading of Profile and Ratings data from csv done!\n"  
               << "\nReading video names data from csv...\n";
-    //std::vector<std::string> videos = ReadVidData.readVidNames("data/youtube_trending_videos_data.csv");
+    std::vector<std::string> videos = ReadVidData.readVidNames("data/youtube_trending_videos_data_sm.csv");
     std::cout << "Reading of video names data from csv done!\n";
 
-    
+    /*
     std::unordered_map<std::string, std::vector<int>> profiles = { 
                                                     {"Tony",    {0, 1, 1, 0, 0, -1, -1, 1, 0, 1, 0, 1}}, 
                                                     {"Jackson", {0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, -1}},
@@ -349,7 +349,7 @@ int main()
                                     "11) Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla varius.", 
                                     "12) Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque posuere."
                                     };
-    
+    */
     
     // caching data
     RecommendationEngine Engine(videos, profiles);
