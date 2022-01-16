@@ -314,7 +314,7 @@ bool RecommendationEngine::isZero(const int rating)
 int main()
 {
     Read ReadVidData;
-    //std::cout << "\nReading Profile and Ratings data from csv...\n";
+    std::cout << "\nReading Profile and Ratings data from csv...\n";
     std::unordered_map<std::string, std::vector<int>> profiles = ReadVidData.readProfileRatings("data/profileRatings_sm.csv");
     std::cout << "Reading of Profile and Ratings data from csv done!\n"  
               << "\nReading video names data from csv...\n";
