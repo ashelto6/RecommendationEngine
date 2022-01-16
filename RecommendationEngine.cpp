@@ -353,7 +353,7 @@ int main()
     
     // caching data
     RecommendationEngine Engine(videos, profiles);
-    
+    /*
     for( auto& user : profiles )
     {
         std::cout << "\n#########################################################################################################\n";
@@ -372,8 +372,8 @@ int main()
             
         std::cout << "#########################################################################################################\n";
     }
+    */
     
-    /*
     // client interaction begins
     std::string name;
     std::cout << "\nEnter a username: ";
@@ -397,5 +397,4 @@ int main()
         std::cout << "\nEnter a username: ";
         std::cin >> name;
     }
-    */
 }
